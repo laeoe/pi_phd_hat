@@ -15,9 +15,14 @@ def midi_to_freq(note):
 osc = Sine(freq=440, mul=0.1).out()
 osc.stop()
 
+# def key_freq(key):
+#     a = 440 # Base tone at 440Hz
+#     return a * 2 **((key - 49) / 12) # calculate the frequency of a piano key
+
 def key_freq(key):
     a = 440 # Base tone at 440Hz
-    return a * np.power(2, (key - 49) / 12) # calculate the frequency of a piano key
+    return a * 2 **((key - 49) / 12) # calculate the frequency of a piano key
+
 
 # Find and open the MIDI Keyboard
 midi_input = None
@@ -34,7 +39,8 @@ if not midi_input:
 def process_midi_message(msg):
     if msg.type == 'note_on' and msg.velocity > 0:
         # Start the oscillator with the frequency of the note
-        osc.freq = midi_to_freq(msg.note)
+        # osc.freq = midi_to_freq(msg.note)
+        osc.freq = key_freq(msg.note)
         osc.out()
     elif msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity == 0):
         # Stop the oscillator
