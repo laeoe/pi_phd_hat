@@ -1,5 +1,6 @@
 import mido
 from pyo import *
+import numpy as np
 
 # Initialize Pyo server
 s = Server().boot()
@@ -13,6 +14,10 @@ def midi_to_freq(note):
 # Create a sine wave oscillator but don't play it yet
 osc = Sine(freq=440, mul=0.1).out()
 osc.stop()
+
+def key_freq(key):
+    a = 440 # Base tone at 440Hz
+    return a * np.power(2, (key - 49) / 12) # calculate the frequency of a piano key
 
 # Find and open the MIDI Keyboard
 midi_input = None
