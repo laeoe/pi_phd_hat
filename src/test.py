@@ -6,22 +6,16 @@ import numpy as np
 s = Server().boot()
 s.start()
 
-# Function to convert MIDI note numbers to frequency
-def midi_to_freq(note):
-    a = 440  # frequency of A (common value is 440Hz)
-    return (a / 32) * (2 ** ((note - 9) / 12))
 
 # Create a sine wave oscillator but don't play it yet
 osc = Sine(freq=440, mul=0.1).out()
 osc.stop()
 
-# def key_freq(key):
-#     a = 440 # Base tone at 440Hz
-#     return a * 2 **((key - 49) / 12) # calculate the frequency of a piano key
 
+# calculate the frequency of a piano key
 def key_freq(key):
     a = 440 # Base tone at 440Hz
-    return a * 2 **((key - 49) / 12) # calculate the frequency of a piano key
+    return a * 2 **((key - 49) / 12) # currentely the number of a4 is wrong!
 
 
 # Find and open the MIDI Keyboard
@@ -51,6 +45,7 @@ try:
     print("Reading MIDI input. Press Ctrl+C to stop.")
     for msg in midi_input:
         process_midi_message(msg)
+        print(msg)
 except KeyboardInterrupt:
     print("Exiting...")
 
