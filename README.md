@@ -50,4 +50,4 @@ Where:
     &a4 \text{ is the frequency of } a4 \text{ (440Hz)}
 \end{align*}
 
-We are using an **AKAI LPK25** Midi Keyboard which can be mapped onto a larger 97 key keyboard by the use of the octave shift buttons. This means the a4 key has the number 
+We are using an **AKAI LPK25** Midi Keyboard which can be mapped onto a larger 97 key keyboard by the use of the octave shift buttons. This means the a4 key has the number 57. 

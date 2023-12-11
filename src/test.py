@@ -15,7 +15,7 @@ osc.stop()
 # calculate the frequency of a piano key
 def key_freq(key):
     a = 440 # Base tone at 440Hz
-    return a * 2 **((key - 49) / 12) # currentely the number of a4 is wrong!
+    return a * 2 **((key - 57) / 12) # currentely the number of a4 is wrong!
 
 
 # Find and open the MIDI Keyboard
@@ -36,6 +36,7 @@ def process_midi_message(msg):
         # osc.freq = midi_to_freq(msg.note)
         osc.freq = key_freq(msg.note)
         osc.out()
+        print(f"freq = {key_freq(msg.note)}")
     elif msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity == 0):
         # Stop the oscillator
         osc.stop()
