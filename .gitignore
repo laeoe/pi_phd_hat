@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Ignore the key samples for now 
+assets/key_samples/*
+
 # C extensions
 *.so
 
