@@ -8,10 +8,6 @@ Source code for a python based PHD Hat
 A standard Piano Keyboard has 88 keys with the following layout.
 ![Piano Keyboard 88 Keys](assets/images/piano_keys_naming.png)
 
-Our Midi Keyboard has 24 Keys (two full octaves) which can be mapped onto a larger 97 key keyboard by the use of the octave shift buttons. This results in the following layout. 
-![Piano Keyboard 97 Keys](assets/images/piano_97key_layout.png)
-
-
 ## The physics behind piano sounds:
 
 The Keyboard of a Piano is comprised in the follwoing way:
@@ -39,15 +35,10 @@ The Keyboard of a Piano is comprised in the follwoing way:
 
 The frequency of the other notes is calculated by the following formula:
 
-\[
-f(n) = a4 \cdot 2^{(n/12)}
-\]
+$f(n) = a4 \cdot 2^{(n/12)}$
 
 Where:
-\begin{align*}
-    &n \text{ is the number of half steps away from } a4 \text{ (positive or negative)} \\
-    &f(n) \text{ is the frequency of the note } n \text{ half steps away from } a4 \\
-    &a4 \text{ is the frequency of } a4 \text{ (440Hz)}
-\end{align*}
+$n$ is the number of half steps away from $a4$ (positive or negative)
+$f(n)$ is the frequency of the note $n$ half steps away from $a4$ which is the frequency of a4 which by convention is set to $440Hz$
 
-We are using an **AKAI LPK25** Midi Keyboard which can be mapped onto a larger 97 key keyboard by the use of the octave shift buttons. This means the a4 key has the number 57. 
+Unlike a standart Piano Keyboard ours, (We are using an **AKAI LPK25** Midi Keyboard) has only 25 Keys Physical Keys starting and ending on C. Those Keys however can be mapped onto 128 Keys (Entirity of MIDI) with the use of the Octave Shift Buttons. This means that the a4 key has the number 57. 
