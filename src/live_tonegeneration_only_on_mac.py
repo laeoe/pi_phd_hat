@@ -1,3 +1,5 @@
+# this requires a working installation of pyo, runns very well on my macbook but not on the pi
+
 import mido
 from pyo import *
 import numpy as np
