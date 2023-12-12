@@ -6,12 +6,12 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'mido', 
-        'numpy',
-        'pyaudio',
-        'wave',
-        'concurrent',
-        'scipy',  
+        # 'mido', 
+        # 'numpy',
+        # 'pyaudio',
+        # 'wave',
+        # 'concurrent',
+        # 'scipy',  
     ],
     # entry_points={
     #     'console_scripts': [
