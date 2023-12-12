@@ -23,7 +23,7 @@ class AudioPlayer:
 
     def play(self, note_number):
         if note_number in self.audio_data:
-            print(f"Playing note {note_number}")
+            # print(f"Playing note {note_number}")
             self.thread_pool.submit(self._play_note, note_number)
 
     def _play_note(self, note_number):
