@@ -12,11 +12,11 @@ class AudioPlayer:
         self.samples_path = samples_path
         self.pyaudio_instance = pyaudio.PyAudio()
         self.audio_data = {}  # Dictionary to store preloaded audio data
-        self.thread_pool = ThreadPoolExecutor(max_workers=3)  # Limit the number of threads
+        self.thread_pool = ThreadPoolExecutor(max_workers=5)  # Limit the number of threads
 
     def preload_audio_data(self):
         """ Preload audio data for each note """
-        for note in range(97):  # Assuming 97 keys
+        for note in range(121):  # Assuming 121 keys
             file_name = f"{self.samples_path}/{note}.wav"
             with wave.open(file_name, 'rb') as wf:
                 self.audio_data[note] = wf.readframes(wf.getnframes())

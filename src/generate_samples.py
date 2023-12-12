@@ -1,8 +1,11 @@
 import numpy as np
 from scipy.io.wavfile import write
 import os
-from pi_phd_hat.src._tests.piano_math import key_2freq
 
+
+def key_2freq(key):
+    a = 440.0 # Base tone a4 = 440Hz
+    return a * 2.0 **((key - 57) / 12)
 
 def generate_sine_wave(freq, duration, dampening, sample_rate):
     """ Generate sine wave corresponding to a given frequency """
@@ -28,7 +31,7 @@ if not os.path.exists(save_path):
     os.makedirs(save_path)
 
 # Generate and save tones for the first 97 piano keys
-for note in range(97):
+for note in range(121):
     file_name = os.path.join(save_path, f"{note}.wav")
     save_tone(note, file_name)
     print(f"Saved {file_name}")
