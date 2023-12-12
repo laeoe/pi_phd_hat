@@ -2,7 +2,6 @@
 
 import pyaudio
 import wave
-import threading
 from concurrent.futures import ThreadPoolExecutor
 import mido
 
