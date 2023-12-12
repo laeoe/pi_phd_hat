@@ -1,10 +1,8 @@
-# # So far the best running version
+# so far best working audio driver for playing back pregenerated key samples
 
 import pyaudio
 import wave
-import threading
 from concurrent.futures import ThreadPoolExecutor
-import mido
 
 class AudioPlayer:
     def __init__(self, samples_path):
@@ -12,6 +10,7 @@ class AudioPlayer:
         self.pyaudio_instance = pyaudio.PyAudio()
         self.audio_data = {}  # Dictionary to store preloaded audio data
         self.thread_pool = ThreadPoolExecutor(max_workers=10)  # Limit the number of threads
+        self.preload_audio_data()
 
     def preload_audio_data(self):
         """ Preload audio data for each note """
@@ -34,37 +33,3 @@ class AudioPlayer:
     def close(self):
         self.thread_pool.shutdown(wait=True)
         self.pyaudio_instance.terminate()
-
-# Initialize and preload audio data
-samples_path = "/home/pi/pi_phd_hat/assets/key_samples"
-
-audio_player = AudioPlayer(samples_path)
-audio_player.preload_audio_data()
-
-# audio_player.play(57)
-
-# MIDI handling (similar to your existing code)
-# Find and open the MIDI Keyboard
-midi_input = None
-for input_name in mido.get_input_names():
-    print(f"Found MIDI input: {input_name}")
-    if "LPK25 mk2" in input_name:  # Replace with your MIDI Keyboard name
-        midi_input = mido.open_input(input_name)
-        break
-
-if not midi_input:
-    raise Exception("MIDI Keyboard not found.")
-
-try:
-    print("Reading MIDI input. Press Ctrl+C to stop.")
-    for msg in midi_input:
-        if msg.type == 'note_on' and msg.velocity > 0:
-            print(msg)
-            audio_player.play(msg.note)
-        elif msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity > 0):
-            # Handle note off event if needed
-            pass
-except KeyboardInterrupt:
-    print("Exiting...")
-# Cleanup
-audio_player.close()
