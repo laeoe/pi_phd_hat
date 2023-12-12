@@ -5,6 +5,9 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
+    package_data={
+        'pi_phd_hat': ['assets/key_samples/*']
+    },
     install_requires=[
         # 'mido', 
         # 'numpy',

@@ -3,10 +3,12 @@
 import pyaudio
 import wave
 from concurrent.futures import ThreadPoolExecutor
+import os
 
 class AudioPlayer:
-    def __init__(self, samples_path):
-        self.samples_path = samples_path
+    def __init__(self):
+        # Determine the base path relative to the current file
+        self.base_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'key_samples')
         self.pyaudio_instance = pyaudio.PyAudio()
         self.audio_data = {}  # Dictionary to store preloaded audio data
         self.thread_pool = ThreadPoolExecutor(max_workers=10)  # Limit the number of threads
@@ -15,8 +17,8 @@ class AudioPlayer:
     def preload_audio_data(self):
         """ Preload audio data for each note """
         for note in range(121):  # Assuming 121 keys
-            file_name = f"{self.samples_path}/{note}.wav"
-            with wave.open(file_name, 'rb') as wf:
+            file_path = os.path.join(self.base_path, f'{note}.wav')
+            with wave.open(file_path, 'rb') as wf:
                 self.audio_data[note] = wf.readframes(wf.getnframes())
 
     def play(self, note_number):
