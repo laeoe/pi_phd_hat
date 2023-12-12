@@ -35,3 +35,4 @@ class AudioPlayer:
     def close(self):
         self.thread_pool.shutdown(wait=True)
         self.pyaudio_instance.terminate()
+        print("AudioPlayer closed")
