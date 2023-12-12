@@ -24,11 +24,13 @@ def save_tone(note_number, file_name, duration=0.5, dampening = 10, sample_rate=
     write(file_name, sample_rate, tone)
 
 # Directory to save the files
-save_path = "/home/pi/pi_phd_hat/assets/key_samples"
+file_path = os.path.abspath(__file__)
+save_path = os.path.dirname(file_path)
 
 # Ensure the directory exists
 if not os.path.exists(save_path):
-    os.makedirs(save_path)
+    # os.makedirs(save_path)
+    raise Exception(f"Directory {save_path} does not exist")
 
 # Generate and save tones for the first 97 piano keys
 for note in range(121):
