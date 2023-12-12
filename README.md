@@ -1,6 +1,11 @@
 # pi_phd_hat
 Source code for a python based PHD Hat
 
+## Installation: 
+1. clone this repository 
+2. make sure the dependencies are installe (currently no dependencies specified)
+2. run `pip install -e pi_phd_hat` 
+
 
 # Abit about Piano Music Therory: 
 ## The Piano Keyboard Layout: 
