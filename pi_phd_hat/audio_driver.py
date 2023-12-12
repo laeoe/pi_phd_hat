@@ -32,7 +32,25 @@ class AudioPlayer:
         stream.stop_stream()
         stream.close()
 
+    def play_other(self, file_path):
+        self.thread_pool.submit(self._play_other, file_path)
+    
+    def _play_other(self, file_path):
+        stream = self.pyaudio_instance.open(format=pyaudio.paInt16, channels=1, rate=44100, output=True)
+        with wave.open(file_path, 'rb') as wf:
+            stream.write(wf.readframes(wf.getnframes()))
+        stream.stop_stream()
+        stream.close()
+        
+
     def close(self):
         self.thread_pool.shutdown(wait=True)
         self.pyaudio_instance.terminate()
         print("AudioPlayer closed")
+
+
+if __name__ == "__main__":
+    print("Testing audio driver")
+    player = AudioPlayer()
+    player.play(60)
+    player._play_other("/home/pi/pi_phd_hat/assets/sounds/level_won.wav")

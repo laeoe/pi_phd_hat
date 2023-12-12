@@ -5,6 +5,7 @@ __pycache__/
 
 # Ignore the key samples for now 
 # assets/key_samples/*.wav
+assets/sounds/*
 
 # C extensions
 *.so

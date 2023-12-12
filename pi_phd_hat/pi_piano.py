@@ -17,6 +17,10 @@ class PiPiano():
             if self.piano_callback:
                 self.piano_callback(message.note)
 
+    def play_other(self, file_path):
+        print(f"Playing file {file_path}")
+        self.pi_synth.play_other(file_path)
+
     def start(self):
         print("Pi Piano started")
         try: 
