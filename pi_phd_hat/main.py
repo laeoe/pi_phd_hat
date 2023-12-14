@@ -22,22 +22,6 @@ level1 = Play_correct_sequence(test_song)
 level2 = Play_correct_sequence(song_topolino)
 level3 = Play_correct_sequence([[61]])
 
-def main():
-    while True:
-        level = int(input("Enter level to play: 1 for level 1"))
-
-        if level == 1:
-            try: 
-                level1 = Play_correct_sequence(test_song)
-                print("finished level 1")
-            except KeyboardInterrupt:
-                pass
-            Level1_Servo.open()
-        
-        else:
-            print("Invalid input, try again")
-            continue
-
 
 def test_main():
     print("Testing a complete run")
