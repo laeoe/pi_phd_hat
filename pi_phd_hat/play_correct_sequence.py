@@ -59,8 +59,8 @@ class Play_correct_sequence:
         print("Level Won")
         print("###############\n")
         self.reset()
-        # self.piano.close()
-
+        self.piano.close()
+        exit()
         # raise something to exit 
         raise KeyboardInterrupt # this is a hack, but it works
 

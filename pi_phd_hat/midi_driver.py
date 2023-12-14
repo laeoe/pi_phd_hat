@@ -19,7 +19,7 @@ class MidiDriver:
         self.is_listening = True
         try:
             while self.is_listening:
-                for msg in self.midi_input:
+                for msg in self.midi_input.iter_pending():
                     if self.message_callback:
                         self.message_callback(msg)
         except KeyboardInterrupt:
@@ -32,6 +32,12 @@ class MidiDriver:
     def stop_listening(self):
         """Stops listening for MIDI messages."""
         self.is_listening = False
+
+    def clear_all_messages(self):
+        """Clears all pending MIDI messages."""
+        for msg in self.midi_input.iter_pending():
+            pass
+
 
     def close(self):
         """Closes the connection to the MIDI device."""
