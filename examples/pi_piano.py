@@ -1,8 +1,9 @@
 from pi_phd_hat.pi_piano import PiPiano
 
-def callback_function(note: int):
+def callback_function(note: int, is_pressed: bool, msg):
     # This function will be called when a key is pressed, with the note number as argument
-    print(f'callback function called, got note {note} of type {type(note)}')
+    # print(f'callback function called, got note {note} of type {type(note)}')
+    print(note)
 
 pi_piano = PiPiano(piano_callback=callback_function, verbose=False)
 try:

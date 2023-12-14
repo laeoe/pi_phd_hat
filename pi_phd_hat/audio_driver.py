@@ -46,7 +46,7 @@ class AudioPlayer:
     def close(self):
         self.thread_pool.shutdown(wait=True)
         self.pyaudio_instance.terminate()
-        print("AudioPlayer closed")
+        # print("AudioPlayer closed")
 
 
 if __name__ == "__main__":
@@ -54,3 +54,5 @@ if __name__ == "__main__":
     player = AudioPlayer()
     player.play(60)
     player._play_other("/home/pi/pi_phd_hat/assets/sounds/level_won.wav")
+    player.close()
+    print("Test finished")
