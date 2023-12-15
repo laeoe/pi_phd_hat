@@ -21,6 +21,8 @@ path_hat_won = "/home/pi/pi_phd_hat/assets/sounds/hat_won.wav"
 # path_level_won = "/home/pi/pi_phd_hat/assets/sounds/smb_powerup.wav"
 sample_rate_other = 22000
 
+path_mario_card = "/home/pi/pi_phd_hat/assets/sounds/mario-kart-race-start-gaming-sound-effect-101soundboards.wav"
+sample_rate_mario_card = 96000
 
 def start_level(path_to_level):
     try:
@@ -39,7 +41,8 @@ str3 = "##############################"
 
 if __name__ == "__main__":
     while True:
-        try: 
+        try:
+            other_audio.play_other(path_mario_card, sample_rate_mario_card) 
             start_level(path_level1)
             start_level(path_level2)
             start_level(path_level3)
