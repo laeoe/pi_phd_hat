@@ -1,5 +1,14 @@
 import subprocess
 from pi_phd_hat.audio_driver import AudioPlayer
+import time
+
+import warnings
+
+# Ignore all warnings
+warnings.filterwarnings("ignore")
+
+
+# Your code here
 
 
 other_audio = AudioPlayer()
@@ -21,6 +30,11 @@ def start_level(path_to_level):
         pass
     print("\n###############\nLevel Ended, starting Next...\n###############\n")
 
+str1 = "\n\n\n\n\n\n##############################"
+str2 = "##############################\n\n\n\n\n\n"
+
+str3 = "##############################"
+
 
 
 if __name__ == "__main__":
@@ -31,8 +45,14 @@ if __name__ == "__main__":
             start_level(path_level3)
 
             # Fall back to the piano: 
-            print("\n\n###############\nGame Won returning to Pi Piano\n###############\n\n")
+            print(str1)
+            print(str3)
+            print("\n     Game Won - Congrats!!!\n")
+            print(str3)
+            print(str2)     
+
             other_audio.play_other(path_hat_won, sample_rate_other)
+            time.sleep(5)
 
             example_piano_path = "/home/pi/pi_phd_hat/examples/pi_piano.py"
             start_level(example_piano_path)

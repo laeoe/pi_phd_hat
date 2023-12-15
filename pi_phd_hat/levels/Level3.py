@@ -31,7 +31,12 @@ def main():
     Level1_Servo = Level_Servo(14, 65, -25, init_state = "open")
     Level2_Servo = Level_Servo(15, 65, -25, init_state = "open")
     Level3_Servo = Level_Servo(23, -90, 0, init_state = "closed")
-    print("\n ###############\n Starting Level 3\n ###############\n")
+
+    str1 = "\n\n\n\n\n\n##############################\n"
+    str2 = "\n##############################\n\n\n\n\n\n"
+    print(str1)
+    print("     Starting level 3")
+    print(str2)
     play_level(level3, Level3_Servo)
 
 if __name__ == "__main__":

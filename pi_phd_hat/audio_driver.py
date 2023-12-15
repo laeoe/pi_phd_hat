@@ -5,13 +5,22 @@ import wave
 from concurrent.futures import ThreadPoolExecutor
 import os
 
+
+import warnings
+
+# Ignore all warnings
+warnings.filterwarnings("ignore")
+
+# Your code here
+
+
 class AudioPlayer:
     def __init__(self):
         # Determine the base path relative to the current file
         self.base_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'key_samples')
         self.pyaudio_instance = pyaudio.PyAudio()
         self.audio_data = {}  # Dictionary to store preloaded audio data
-        self.thread_pool = ThreadPoolExecutor(max_workers=10)  # Limit the number of threads
+        self.thread_pool = ThreadPoolExecutor(max_workers=3)  # Limit the number of threads
         self.preload_audio_data()
 
     def preload_audio_data(self):
@@ -20,6 +29,8 @@ class AudioPlayer:
             file_path = os.path.join(self.base_path, f'{note}.wav')
             with wave.open(file_path, 'rb') as wf:
                 self.audio_data[note] = wf.readframes(wf.getnframes())
+        # preload the files for the other audio
+        # self.audio_data["hat_won"] = self._preload_other("hat_won.wav")
 
     def play(self, note_number):
         if note_number in self.audio_data:

@@ -28,7 +28,11 @@ level2 = Play_correct_sequence(song_topolino_backwards)
 
 
 def test_main():
-    print("\n ###############\n Starting Level 2\n ###############\n")
+    str1 = "\n\n\n\n\n\n##############################\n"
+    str2 = "\n##############################\n\n\n\n\n\n"
+    print(str1)
+    print("     Starting level 2")
+    print(str2)
     play_level(level2, Level2_Servo)
 
 if __name__ == "__main__":

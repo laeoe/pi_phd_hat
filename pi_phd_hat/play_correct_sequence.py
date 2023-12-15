@@ -5,7 +5,8 @@ import time
 
 test_sequence = [[60, 72], [62, 74], [64, 76], [65, 77], [67, 79], [69, 81], [71, 83], [72, 84]]
 
-path_error_sound = "/home/pi/pi_phd_hat/assets/sounds/smb_mariodie.wav"
+# path_error_sound = "/home/pi/pi_phd_hat/assets/sounds/smb_mariodie.wav"
+path_error_sound = "/home/pi/pi_phd_hat/assets/sounds/smb_bump.wav"
 path_level_won = "/home/pi/pi_phd_hat/assets/sounds/smb_powerup.wav"
 sample_rate_level_won = 22000
 sample_rate_error_sound = 22000
@@ -20,18 +21,18 @@ class Play_correct_sequence:
 
     def advance_progress(self):
         self.progress += 1
-        print(f"Advancing progress, current progress is {self.progress}")
+        # print(f"Advancing progress, current progress is {self.progress}")
         if self.is_complete():
             self.finish()
         
         else:
             self.next_element = self.sequence_1[self.progress].copy()
-            print(f"Progress is now {self.progress}, next element is {self.next_element}")
+            # print(f"Progress is now {self.progress}, next element is {self.next_element}")
         
 
     def check_sequence(self, note):
         if note in self.next_element:
-            # print(f"Played correct note {note}, from expected {self.next_element}")
+            print(f"{note} was correct")
             # remove the not from next_element
             self.next_element.remove(note)
             if len(self.next_element) == 0:
@@ -41,9 +42,10 @@ class Play_correct_sequence:
             self.finish()
             
         else:
-            time.sleep(0.3)
+            # time.sleep(0.3)
             self.other_audio.play_other(path_error_sound, sample_rate_error_sound)
-            print(f"played {note} not {self.next_element}, resetting...")
+            print(f"Wrong!!!! Played {note} but expected {self.next_element}")
+            # print(f"played {note} not {self.next_element}, resetting...")
             self.reset()
     
     def callback_function(self, note, is_pressed, msg):
