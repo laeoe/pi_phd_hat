@@ -68,7 +68,9 @@ class Play_correct_sequence:
             return False
 
     def finish(self):
+        time.sleep(0.5)
         self.other_audio.play_other(path_level_won, sample_rate_level_won)
+        time.sleep(2)
         print("\n###############")
         print("Level Won")
         print("###############\n")
@@ -92,7 +94,8 @@ if __name__ == "__main__":
     try:
         level1.start()
     except KeyboardInterrupt:
-        pass
+        level1.finish()
+    
 
 
     
