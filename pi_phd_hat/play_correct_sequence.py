@@ -30,8 +30,12 @@ class Play_correct_sequence:
             self.next_element.remove(note)
             if len(self.next_element) == 0:
                 self.advance_progress()
+        elif note == 120:
+            print("Level skipped")
+            self.finish()
+            
         else:
-            print(f"played {note} but expecting {self.next_element}, resetting")
+            print(f"played {note} not {self.next_element}, resetting...")
             self.reset()
     
     def callback_function(self, note, is_pressed, msg):
