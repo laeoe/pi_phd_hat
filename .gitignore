@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.DS_Store
+
 # Ignore the key samples for now 
 # assets/key_samples/*.wav
 assets/sounds/*.wav
