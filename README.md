@@ -1,10 +1,16 @@
-# pi_phd_hat
-Source code for a python based PHD Hat
+# Piano on PHD Hat:
+Source Code for a PHD-Hat that runs on a rasberry pi, includes a Midi Keyboard Piano, A basic synthesizer on the Pi to generate Tones, and some games that require the correct playing of sequences in order for servos to open Levels. 
+
+This Repo is currently a very pachy Version.
 
 ## Installation: 
 1. clone this repository 
 2. make sure the dependencies are installe (currently no dependencies specified)
 2. run `pip install -e pi_phd_hat` 
+
+## Necessary things to get it working: 
+- The name of the MIDI Keyboard needs to be manually specified
+- The Game relies on some additional sounds, downloaded from https://themushroomkingdom.net
 
 
 # Abit about Piano Music Therory: 
