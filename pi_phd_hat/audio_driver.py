@@ -32,11 +32,11 @@ class AudioPlayer:
         stream.stop_stream()
         stream.close()
 
-    def play_other(self, file_path):
-        self.thread_pool.submit(self._play_other, file_path)
+    def play_other(self, file_path, sample_rate):
+        self.thread_pool.submit(self._play_other, file_path, sample_rate)
     
-    def _play_other(self, file_path):
-        stream = self.pyaudio_instance.open(format=pyaudio.paInt16, channels=1, rate=44100, output=True)
+    def _play_other(self, file_path, sample_rate):
+        stream = self.pyaudio_instance.open(format=pyaudio.paInt16, channels=1, rate=sample_rate, output=True)
         with wave.open(file_path, 'rb') as wf:
             stream.write(wf.readframes(wf.getnframes()))
         stream.stop_stream()

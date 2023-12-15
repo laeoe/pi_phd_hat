@@ -4,12 +4,9 @@ from pi_phd_hat.pi_piano import PiPiano
 from pi_phd_hat.play_correct_sequence import Play_correct_sequence
 from pi_phd_hat.servo_driver import Level_Servo
 
-song_topolino = [[76], [74], [76], [74], [76], [77], [76], [72], [72], [72], [72]] 
+song_topolino = [[64], [62], [64], [62], [64], [65], [64], [60], [60], [60], [60]] 
 # make the same sequence backwards 
 song_topolino_backwards = song_topolino[::-1]
-
-
-test_song = [[60, 72], [62, 74], [64, 76]]
 
 
 Level1_Servo = Level_Servo(14, 65, -25, init_state = "closed")
