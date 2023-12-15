@@ -11,7 +11,6 @@ assets/sounds/*
 *.so
 
 # Distribution / packaging
-*.ipynb
 
 .Python
 build/
