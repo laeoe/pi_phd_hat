@@ -60,7 +60,7 @@ class Play_correct_sequence:
         print("###############\n")
         self.reset()
         self.piano.close()
-        exit()
+        # exit()
         # raise something to exit 
         raise KeyboardInterrupt # this is a hack, but it works
 

@@ -2,14 +2,17 @@ from gpiozero import Servo
 from time import sleep
 
 class Level_Servo: 
-    def __init__(self, pin_nr, angle_open, angle_closed):
+    def __init__(self, pin_nr, angle_open, angle_closed, init_state = "closed"):
         self.pin_nr = pin_nr
         self.angle_open = angle_open
         self.angle_closed = angle_closed
         self.servo = Servo(pin_nr, min_pulse_width = 0.0005, max_pulse_width = 0.0025)
         self.servo.value = None
         self.state = "closed"
-        self.close()
+        if init_state == "closed":
+            self.close()
+        elif init_state == "open":
+            self.open()
 
     def angle_2_value(self, angle):
         return angle / 90
@@ -53,16 +56,17 @@ class Servo_Tester:
             self.servo.value = None
 
 
-Level1_Servo = Level_Servo(14, 65, -25)
-Level2_Servo = Level_Servo(15, 65, -25)
-Level3_Servo = Level_Servo(23, 0, -90)
 
 
-Level_Servos = [Level1_Servo, Level2_Servo, Level3_Servo]
 
 if __name__ == "__main__":
     # servo = Servo_Tester(14)
     # servo.start_cmd_input_dialog()
+
+    Level1_Servo = Level_Servo(14, 65, -25)
+    Level2_Servo = Level_Servo(15, 65, -25)
+    Level3_Servo = Level_Servo(23, -90, 0)  
+    Level_Servos = [Level1_Servo, Level2_Servo, Level3_Servo]
     print("Testing servo driver")
     while True:
         for level in Level_Servos:
